@@ -114,6 +114,10 @@ public class EchoNavigator implements FeatureListener {
         	{
         		p.rotate(-90);
         		Motor.A.rotate(-180);
+        		Motor.A.forward();
+        		Motor.A.backward();
+        		Motor.A.forward();
+        		Motor.A.backward();
         		Thread.sleep(1000);        		
 //        		p.setTravelSpeed(p.getMaxTravelSpeed());
 //        		p.forward();
