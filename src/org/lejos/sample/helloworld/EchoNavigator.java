@@ -89,49 +89,32 @@ public class EchoNavigator implements FeatureListener {
         EchoNavigator robot = new EchoNavigator(nav, SensorPort.S4);
         robot.pilot = p;
         
-        
-        // TODO: For version 1.0. 
-        // This is overly complex to make Navigator and a FeatureListener do something simple like
-        // a bumper car. Might want to look at ways to change API so we can simplify this type of sample. Coding
-        // this type of example is not very intuitive with the current API.
+        final double half_speed = p.getMaxTravelSpeed() / 2;
+        final double quart_speed = half_speed / 2;
         
         // Repeatedly drive to random points:
         while(!Button.ESCAPE.isDown()) {
-//        	System.out.println("Target: ");
-//        	double x_targ = Math.random() * AREA_WIDTH;
-//        	double y_targ = Math.random() * AREA_LENGTH;
-//        	System.out.println("X: " + (int)x_targ);
-//        	System.out.println("Y: " + (int)y_targ);
-//        	System.out.println("Press ENTER key");
-//        	Button.ENTER.waitForPressAndRelease();
-        	
         	
         	
         	robot.fd.enableDetection(true); //  Enable detector
         	
         	if(robot.fd.scan() == null)
         	{
-        		p.setTravelSpeed(p.getMaxTravelSpeed());
+        		p.setTravelSpeed(half_speed);
         		p.forward();
+        	} else {
+        		p.setTravelSpeed(quart_speed);
+        		p.backward();
         	}
         	
-        	// When an obstacle is encountered and stop() is called, the method goTo() returns 
-        	// even though it didn't reach the target waypoint... 
-	        
-	        
-	        // ...therefore this delay is needed.
 	        while(p.isMoving())
 	        {
 	        	Feature feature = robot.fd.scan();
-	        	Thread.sleep(100);
+	        	Thread.sleep(250);
 	        }
 	        
 	        robot.fd.enableDetection(false); //  Disable detector while stopped
-	        
-	        
-	        // Output arrival:
-	       // Pose curPose = nav.getPoseProvider().getPose();
-	       // System.out.println("Arrived: " + (int)curPose.getX() + ", " + (int)curPose.getY());
+	      
         }
     }
     private Navigator nav;
