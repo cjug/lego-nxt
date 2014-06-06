@@ -168,6 +168,8 @@ public class EchoNavigator implements FeatureListener {
 		{
 			pilot.stop();
 			Sound.beepSequenceUp();
+			pilot.arc(0, 180);
+			pilot.setTravelSpeed(currentTravelSpeed * 0.9);
 		}
 		
 		detector.enableDetection(true);
