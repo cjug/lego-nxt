@@ -111,6 +111,7 @@ public class EchoNavigator implements FeatureListener {
         	
         	if(robot.fd.scan() == null)
         	{
+        		p.rotate(-90);
         		p.setTravelSpeed(p.getMaxTravelSpeed());
         		p.forward();
         	}
