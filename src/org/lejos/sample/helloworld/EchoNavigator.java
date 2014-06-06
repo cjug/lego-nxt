@@ -3,6 +3,7 @@ import java.io.IOException;
 import java.util.Random;
 
 import lejos.nxt.Button;
+import lejos.nxt.Motor;
 import lejos.nxt.SensorPort;
 import lejos.nxt.Sound;
 import lejos.nxt.UltrasonicSensor;
@@ -112,8 +113,8 @@ public class EchoNavigator implements FeatureListener {
         	if(robot.fd.scan() == null)
         	{
         		p.rotate(-90);
-        		Thread.sleep(1000);
-        		p.rotate(-90);
+        		Motor.A.rotate(-180);
+        		Thread.sleep(1000);        		
 //        		p.setTravelSpeed(p.getMaxTravelSpeed());
 //        		p.forward();
         	}
