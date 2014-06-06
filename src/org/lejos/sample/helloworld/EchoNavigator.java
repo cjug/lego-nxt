@@ -112,8 +112,10 @@ public class EchoNavigator implements FeatureListener {
         	if(robot.fd.scan() == null)
         	{
         		p.rotate(-90);
-        		p.setTravelSpeed(p.getMaxTravelSpeed());
-        		p.forward();
+        		Thread.sleep(1000);
+        		p.rotate(-90);
+//        		p.setTravelSpeed(p.getMaxTravelSpeed());
+//        		p.forward();
         	}
         	
         	// When an obstacle is encountered and stop() is called, the method goTo() returns 
